@@ -1,0 +1,7 @@
+:root {
+    --cor-principal: var(--platinum);
+    --cor-secundaria: var(--pretinho);
+    --cor-player1: var(--vermelho-3);
+    --cor-player2: var(--verde);
+    --cor-titulo: var(--laranja2);
+}
