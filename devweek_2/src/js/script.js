@@ -1,51 +1,22 @@
-// /*
-//     Quando clicar na seta para avançar temos que esconder todas as imagens e mostrar a proxima imagem
+const personagens = document.querySelectorAll(".personagem");
 
-//         A imagem atual começa em 0 por que é a primeira imagem assim que for clicado no avançar eu preciso adicionar mais 1 no contador de imagens para poder saber que agora eu vou mostrar a segunda imagem
-        
-//         esconder todas as imagens
-//             pegar todas as imagens usando o DOM e remover a classe mostrar
-        
-//         mostrar a proxima imagem 
-//             pegar todas as imagens, descobrir qual é a proxima, e colocar a classe mostrar nela 
-// */
+personagens.forEach((personagem) => {
+  personagem.addEventListener("mouseenter", () => {
+    const idSelecionado = personagem.attributes.id.value;
 
-// const imagensPainel = document.querySelectorAll(".imagem-painel");
-// const setaAvancar = document.getElementById("btn-avancar");
-// const setaVoltar = document.getElementById("btn-voltar");
-// let imagemAtual = 0;
+    if (idSelecionado === "ultron") return;
 
-// function esconderImagem(){
-//     imagensPainel.forEach((imagem) => {
-//         imagem.classList.remove("mostrar");
-//     });
-// }
+    const personagemSelecionado = document.querySelector(".selecionado");
+    personagemSelecionado.classList.remove("selecionado");
 
-// function mostrarImagem() {
-//     imagensPainel[imagemAtual].classList.add('mostrar');
-// };
+    personagem.classList.add("selecionado");
 
-// setaAvancar.addEventListener("click", function () {
+    const nomeSelecionado = personagem.getAttribute("data-name");
 
-//     const totalDeImagens = imagensPainel.length - 1;
-//     if(imagemAtual === totalDeImagens) {
-//         return;
-//     }
+    const imagemJogador1 = document.getElementById("personagem-jogador-1");
+    imagemJogador1.src = `./src/imagens/fotos/${idSelecionado}.png`;
 
-//     imagemAtual++;
-//     esconderImagem();
-//     mostrarImagem();
-// });
-
-// setaVoltar.addEventListener("click", function () {
-
-//     if(imagemAtual === 0) {
-//         return;
-//     }
-
-//     imagemAtual--;
-//     esconderImagem();
-//     mostrarImagem();
-// });
-        
-
+    const nomeJogador1 = document.getElementById("nome-jogador-1");
+    nomeJogador1.innerHTML = `${nomeSelecionado}`;
+  });
+});
